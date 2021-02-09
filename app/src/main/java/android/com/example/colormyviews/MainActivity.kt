@@ -20,14 +20,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+        //text Views
         val box_one_text = binding.boxOneText
         val box_two_text = binding.boxTwoText
         val box_three_text = binding.boxThreeText
         val box_four_text = binding.boxFourText
         val box_five_text = binding.boxFiveText
+        //Constraint
         val constraint_layout=binding.constraintLayout
+        //buttons
+        val btn_red = binding.redButton
+        val btn_green= binding.greenButton
+        val btn_yellow = binding.yellowButton
         val clickableViews: List<View> =
-                listOf(box_one_text, box_two_text , box_three_text,box_four_text, box_five_text, constraint_layout)
+                listOf(box_one_text, box_two_text , box_three_text,box_four_text, box_five_text, constraint_layout,btn_red,btn_green,btn_yellow)
 
         for (item in clickableViews) {
             item.setOnClickListener { makeColored(it) }
@@ -36,6 +42,11 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun makeColored(view: View) {
+
+        val box_three_text = binding.boxThreeText
+        val box_four_text = binding.boxFourText
+        val box_five_text = binding.boxFiveText
+
         when (view.id) {
             //Boxes using Color class colors for background
             R.id.box_one_text -> view.setBackgroundColor(Color.CYAN)
@@ -46,7 +57,12 @@ class MainActivity : AppCompatActivity() {
             R.id.box_four_text -> view.setBackgroundResource(android.R.color.holo_orange_dark)
             R.id.box_five_text -> view.setBackgroundResource(android.R.color.holo_blue_bright)
 
-            else -> view.setBackgroundColor(Color.YELLOW)
+            // Boxes using custom colors for background
+            R.id.red_button -> box_three_text.setBackgroundResource(R.color.my_red)
+            R.id.green_button -> box_four_text.setBackgroundResource(R.color.my_green)
+            R.id.yellow_button -> box_five_text.setBackgroundResource(R.color.my_yellow)
+
+            else -> view.setBackgroundColor(Color.LTGRAY)
         }
     }
 }
